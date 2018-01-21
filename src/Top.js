@@ -13,11 +13,11 @@ const Logo = styled.div`
   text-transform: ${props => props.tt};
   font-weight: ${props => props.fw};
   display: ${props => props.dis};
-  padding-left: 15px;
+  padding-left: 20px;
 `
 
 const LogoImage = styled.img`
-  width: 50px;
+  width: 60px;
   display: inline;
 `
 
@@ -25,10 +25,10 @@ const Container = styled.div`padding: 2%;`
 
 const Top = () => (
   <div>
-    <Background c="#3a7bd5">
+    <Background c="#fff">
       <Container>
         <LogoImage src={logo} />
-        <Logo c="#fff" fw="800" dis="inline" tt="none" fs="3rem">
+        <Logo c="#103FB9" fw="800" dis="inline" tt="none" fs="3rem">
           Camlytics
         </Logo>
       </Container>
