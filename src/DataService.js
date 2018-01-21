@@ -23,6 +23,16 @@ class DataService {
         });
     }
 
+    maxCount() {
+        return new Promise((success, fail)=>{
+            fetch(`${this._BASE_URL}/customers/maxcount`)
+                .then(response=>{
+                    response.json()
+                        .then(success);
+                })
+        });
+    }
+
 }
 
 export default DataService;

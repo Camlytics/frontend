@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920px" height="1080px" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Store Map</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="49" width="609" height="395"></rect>
+        <rect id="path-2" x="0" y="182" width="609" height="213"></rect>
+        <ellipse id="path-3" cx="304.5" cy="270" rx="97.5" ry="97"></ellipse>
+    </defs>
+    <g id="Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Store-Map">
+            <g id="1" transform="translate(0.000000, 240.000000)">
+                <rect id="Rectangle-Copy" fill="#5D372E" x="0" y="0" width="250" height="250"></rect>
+                <text font-family="SFProText-Bold, SF Pro Text" font-size="144" font-weight="bold" letter-spacing="1.846153" fill="#FFFFFF">
+                    <tspan x="87" y="176">1</tspan>
+                </text>
+            </g>
+            <g id="2" transform="translate(0.000000, 590.000000)">
+                <rect id="Rectangle" fill="#5D372E" x="0" y="0" width="250" height="250"></rect>
+                <text font-family="SFProText-Bold, SF Pro Text" font-size="144" font-weight="bold" letter-spacing="1.846153" fill="#FFFFFF">
+                    <tspan x="78" y="176">2</tspan>
+                </text>
+            </g>
+            <g id="3" transform="translate(1670.000000, 240.000000)">
+                <rect id="Rectangle-Copy-2" fill="#5D372E" x="0" y="0" width="250" height="250"></rect>
+                <text font-family="SFProText-Bold, SF Pro Text" font-size="144" font-weight="bold" letter-spacing="1.846153" fill="#FFFFFF">
+                    <tspan x="76" y="176">3</tspan>
+                </text>
+            </g>
+            <g id="4" transform="translate(1668.000000, 590.000000)">
+                <rect id="Rectangle-2" fill="#5D372E" x="0" y="0" width="250" height="250"></rect>
+                <text font-family="SFProText-Bold, SF Pro Text" font-size="144" font-weight="bold" letter-spacing="1.846153" fill="#FFFFFF">
+                    <tspan x="75" y="176">4</tspan>
+                </text>
+            </g>
+            <g id="Store" transform="translate(594.000000, 189.000000)">
+                <g id="camera" transform="translate(62.000000, 0.000000)">
+                    <g id="Rectangle">
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <rect stroke="#5D372E" stroke-width="6" x="-3" y="46" width="615" height="401"></rect>
+                    </g>
+                    <g id="Rectangle-2">
+                        <use fill="#AF5B46" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <rect stroke="#5D372E" stroke-width="6" x="-3" y="179" width="615" height="219"></rect>
+                    </g>
+                    <circle id="Oval-3" fill="#5D372E" cx="453.5" cy="271.5" r="27.5"></circle>
+                    <circle id="Oval" stroke="#5D372E" stroke-width="6" fill="#FFFFFF" cx="305" cy="270" r="149"></circle>
+                    <rect id="Rectangle-3" fill="#5D372E" x="488" y="91" width="79" height="30"></rect>
+                    <rect id="Rectangle-4" fill="#5D372E" x="43" y="0" width="91" height="49"></rect>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Oval-2" fill="#515151" xlink:href="#path-3"></use>
+                    <path d="M229,268.452381 L245.392857,268.452381 L245.392857,315 L229,315 L229,268.452381 Z M256.321429,249.285714 L272.714286,249.285714 L272.714286,315 L256.321429,315 L256.321429,249.285714 Z M310.964286,221.904762 L327.357143,221.904762 L327.357143,315 L310.964286,315 L310.964286,221.904762 Z M338.285714,238.333333 L354.678571,238.333333 L354.678571,315 L338.285714,315 L338.285714,238.333333 Z M365.607143,279.404762 L382,279.404762 L382,315 L365.607143,315 L365.607143,279.404762 Z M283.642857,200 L300.035714,200 L300.035714,315 L283.642857,315 L283.642857,200 Z" id="traffic" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                </g>
+                <text id="CamStore" font-family="SFProText-Bold, SF Pro Text" font-size="144" font-weight="bold" letter-spacing="1.846153" fill="#515151">
+                    <tspan x="0" y="667">CamStore</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
