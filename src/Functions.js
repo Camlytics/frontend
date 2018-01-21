@@ -1,15 +1,8 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import styled from 'styled-components'
-import { Columns, Column, Container } from 're-bulma'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from 'recharts'
+import {Column, Columns} from 're-bulma'
+import {CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis} from 'recharts'
+import DataService from "./DataService";
 
 const AppContainer = styled.div`
   padding: 2%;
@@ -49,107 +42,122 @@ const ChartTitle = styled.h1`
   color: #fff;
 `
 
-const Data = styled.div`font-size: 2rem;`
+const Data = styled.div`font-size: 2rem;`;
 
 class Functions extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: [
-        { name: 'Page A', customers: 2400 },
-        { name: 'Page B', customers: 2210 },
-        { name: 'Page C', customers: 2290 },
-        { name: 'Page D', customers: 2000 },
-        { name: 'Page E', customers: 2181 },
-        { name: 'Page F', customers: 2500 }
-      ],
-      active: '5'
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [
+                // {name: 'Page A', customers: 2400},
+                // {name: 'Page B', customers: 2210},
+                // {name: 'Page C', customers: 2290},
+                // {name: 'Page D', customers: 2000},
+                // {name: 'Page E', customers: 2181},
+                // {name: 'Page F', customers: 2500}
+            ],
+            currentCustomerCount: {
+                count: 0,
+                datetime: ''
+            }
+        };
+        let dataService = new DataService();
+
+
+        let updateCurrentCustomerCount = () => {
+            dataService.currentCustomerCounts()
+                .then(count => {
+                    this.state.currentCustomerCount = count;
+                    this.setState(this.state);
+                });
+        };
+
+        let updateCustomerCounts  = () => {
+            dataService.customerCounts()
+                .then(counts => {
+                    this.state.data = counts.map((count, index) => ({
+                        name: index,
+                        customers: count
+                    }));
+                    this.setState(this.state);
+                });
+        };
+
+        updateCurrentCustomerCount();
+
+        updateCustomerCounts();
+
+        setInterval(()=>{
+            updateCurrentCustomerCount();
+            updateCustomerCounts();
+
+        }, 1000);
     }
-  }
 
-  // getInitialState() {
-  //   return { data: data }
-  // }
+    render() {
+        return (
+            <div>
+              <AppContainer>
+                <Columns>
+                  <Column size="isThreeQuarters">
+                    <LineChart
+                        width={1000}
+                        height={500}
+                        data={this.state.data}
+                        margin={{top: 5, right: 30, left: 20, bottom: 5}}
+                    >
+                      <XAxis dataKey="name"/>
+                      <YAxis/>
+                      <CartesianGrid strokeDasharray="3 3"/>
+                      <Tooltip/>
+                      <Legend/>
+                      <Line
+                          type="monotone"
+                          dataKey="customers"
+                          stroke="#3a7bd5"
+                          activeDot={{r: 8}}
+                      />
+                    </LineChart>
+                  </Column>
 
-  // componentDidMount() {
-  //   setInterval(
-  //     function() {
-  //       var data = this.state.data
-  //       i++
-  //       data = [
-  //         ...data,
-  //         { name: 'Page ' + i, uv: 3490 + i, pv: 4300 + i, amt: 2100 + i }
-  //       ]
-  //       this.setState({ data: data })
-  //     }.bind(this),
-  //     100
-  //   )
-  // }
+                  <Column>
+                    <ChartTitle> When do your customers shop? </ChartTitle>
 
-  render() {
-    return (
-      <div>
-        <AppContainer>
-          <Columns>
-            <Column size="isThreeQuarters">
-              <LineChart
-                width={1000}
-                height={500}
-                data={this.state.data}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="customers"
-                  stroke="#3a7bd5"
-                  activeDot={{ r: 8 }}
-                />
-              </LineChart>
-            </Column>
+                    <Columns>
+                      <Column size="isHalf">10:01 AM</Column>
 
-            <Column>
-              <ChartTitle> When do your customers shop? </ChartTitle>
+                      <Column>2</Column>
+                    </Columns>
 
-              <Columns>
-                <Column size="isHalf">10:01 AM</Column>
+                    <Columns>
+                      <Column size="isHalf">10:03 AM</Column>
 
-                <Column>2</Column>
-              </Columns>
-
-              <Columns>
-                <Column size="isHalf">10:03 AM</Column>
-
-                <Column>6</Column>
-              </Columns>
-            </Column>
-          </Columns>
-          <Columns>
-            <Column size="isOneThird">
-              <Card>
-                <Title>Active Customers</Title>
-                <Data>{active}</Data>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Title>Avg. Time Spent in Store</Title>
-              </Card>
-            </Column>
-            <Column>
-              <Card>
-                <Title>Sales per Customer</Title>
-              </Card>
-            </Column>
-          </Columns>
-        </AppContainer>
-      </div>
-    )
-  }
+                      <Column>6</Column>
+                    </Columns>
+                  </Column>
+                </Columns>
+                <Columns>
+                  <Column size="isOneThird">
+                    <Card>
+                      <Title>Active Customers</Title>
+                      <Data>{this.state.currentCustomerCount.count}</Data>
+                    </Card>
+                  </Column>
+                  <Column>
+                    <Card>
+                      <Title>Avg. Time Spent in Store</Title>
+                    </Card>
+                  </Column>
+                  <Column>
+                    <Card>
+                      <Title>Sales per Customer</Title>
+                    </Card>
+                  </Column>
+                </Columns>
+              </AppContainer>
+            </div>
+        )
+    }
 }
 
 export default Functions
