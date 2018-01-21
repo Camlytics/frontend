@@ -21,14 +21,15 @@ const AppContainer = styled.div`
 const Card = styled.div`
   padding-top:
   width: 90%;
-  height: 200px;
+  height: 175px;
   background: #fff;
   margin-top: 2%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.10), 0 5px 5px rgba(0, 0, 0, 0.10);
+    cursor: pointer;
   }
 `
 
@@ -42,10 +43,11 @@ const Title = styled.h1`
 `
 
 const ChartTitle = styled.h1`
-  letter-spacing: 2px;
   font-size: 1.5rem;
   padding: 2%;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   background: #103fb9;
   color: #fff;
 `
@@ -53,19 +55,24 @@ const ChartTitle = styled.h1`
 const Data = styled.div`
   font-size: ${props => props.sz};
   text-align: center;
+  font-weight: 800;
 `
-
+const HeatMap = styled.div`
+  width: 100%;
+  height: 500px;
+  border: 1px solid #d8dbe4;
+`
 class Functions extends Component {
   constructor(props) {
     super(props)
     this.state = {
       data: [
-        // {name: 'Page A', customers: 2400},
-        // {name: 'Page B', customers: 2210},
-        // {name: 'Page C', customers: 2290},
-        // {name: 'Page D', customers: 2000},
-        // {name: 'Page E', customers: 2181},
-        // {name: 'Page F', customers: 2500}
+        { name: 'Page A', customers: 2400 },
+        { name: 'Page B', customers: 2210 },
+        { name: 'Page C', customers: 2290 },
+        { name: 'Page D', customers: 2000 },
+        { name: 'Page E', customers: 2181 },
+        { name: 'Page F', customers: 2500 }
       ],
       currentCustomerCount: {
         count: 0,
@@ -109,7 +116,9 @@ class Functions extends Component {
       <div>
         <AppContainer>
           <Columns>
-            <Column size="isThreeQuarters">
+            <Column size="isTwoThirds">
+              <ChartTitle> Customers in Store </ChartTitle>
+
               <LineChart
                 width={1000}
                 height={500}
@@ -129,40 +138,18 @@ class Functions extends Component {
                 />
               </LineChart>
             </Column>
-
             <Column>
-              <ChartTitle> When do your customers shop? </ChartTitle>
-
-              <Columns>
-                <Column size="isHalf">10:01 AM</Column>
-
-                <Column>2</Column>
-              </Columns>
-
-              <Columns>
-                <Column size="isHalf">10:03 AM</Column>
-
-                <Column>6</Column>
-              </Columns>
-            </Column>
-          </Columns>
-          <Columns>
-            <Column size="isOneThird">
               <Card>
                 <Title>Active Customers</Title>
-                <Data sz="4rem">{this.state.currentCustomerCount.count}</Data>
+                <Data sz="3rem">{this.state.currentCustomerCount.count}</Data>
               </Card>
-            </Column>
-            <Column>
               <Card>
                 <Title>Total Customers</Title>
-                <Data sz="4rem">{this.state.totalCustomerCount.count}</Data>
+                <Data sz="3rem">{this.state.totalCustomerCount.count}</Data>
               </Card>
-            </Column>
-            <Column>
               <Card>
-                <Title>Sales per Customer</Title>
-                <Data sz="4rem">
+                <Title>Revenue per Customer</Title>
+                <Data sz="3rem">
                   ${this.state.totalCustomerCount.count / 2}
                 </Data>
                 <Data sz="1em">
@@ -171,6 +158,9 @@ class Functions extends Component {
               </Card>
             </Column>
           </Columns>
+
+          <ChartTitle> Heat Map </ChartTitle>
+          <HeatMap>Heat Map</HeatMap>
         </AppContainer>
       </div>
     )

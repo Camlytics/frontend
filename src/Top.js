@@ -8,6 +8,7 @@ const Background = styled.div`
 `
 
 const Logo = styled.div`
+  text-align: center;
   color: ${props => props.c};
   font-size: ${props => props.fs};
   text-transform: ${props => props.tt};
@@ -21,7 +22,10 @@ const LogoImage = styled.img`
   display: inline;
 `
 
-const Container = styled.div`padding: 2%;`
+const Container = styled.div`
+  padding: 2%;
+  text-align: center;
+`
 
 const Top = () => (
   <div>
